@@ -1,0 +1,23 @@
+.language-selector-container {
+  display:flex;
+
+}
+
+.language-selector-group-input{
+  margin-right:auto;
+  margin-left:5em;
+}
+
+.language-selector-group-output{
+  margin-left:auto;
+  margin-right:5em;
+}
+
+.language-selector-group button{
+  padding:10px;
+}
+
+.language-selector-group {
+  margin-top:5em;
+  padding:10px;
+}
