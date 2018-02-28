@@ -1,5 +1,5 @@
 import React from 'react';
-import 
+import './InputField.css';
 
 export default class InputField extends React.Component {
   // constructor(props) {
@@ -7,7 +7,7 @@ export default class InputField extends React.Component {
   // }
     render() {
       return (
-        <textarea className='input-text'/>
+        <textarea onChange={(e) => this.props.onChange(e)} className='input-text'/>
       )
     }
 
