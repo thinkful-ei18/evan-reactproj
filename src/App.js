@@ -11,7 +11,8 @@ class App extends Component {
     this.state =  {
       sourceLang:'en',
       targetLang:'de',
-      inputText:''
+      inputText:'',
+      outputText:''
     }
   }
 
@@ -33,16 +34,24 @@ class App extends Component {
     })
   }
 
-  produceTranslation (url) {
-    let data = {
-      key:'trnsl.1.1.20180228T161729Z.3662ef5342557f7f.4eb4bca2a19076bf2aba826445101c199a71a0ae',
-      lang:(this.state.sourceLang + '-' + this.state.targetLang)
-    }
-    return fetch(url, data)
+  produceTranslation () {
+    const url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?';
+    let params = new URLSearchParams();
+    params.set('key', 'trnsl.1.1.20180228T161729Z.3662ef5342557f7f.4eb4bca2a19076bf2aba826445101c199a71a0ae');
+    params.set('text',this.state.inputText);
+    params.set('lang',(this.state.sourceLang + '-' + this.state.targetLang)); 
+
+    return fetch(url + params.toString())
+      .then(res => {
+        // this.setState({
+        //   outputText:data.text
+        // })
+        return res.json();
+      })
       .then(data => {
         this.setState({
-          outputText:data.text
-        })
+          outputText:data.text[0]
+        });
       })
   }
 
@@ -51,8 +60,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <LanguageSelector alterTargetLang={(e) => this.alterTargetLang(e)} alterSourceLang={(e) => this.alterSourceLang(e)} {...this.state} />
-        <InputContainer onChange={(e) => this.changeInputText(e)}/>
-        <TranslateButton />
+        <InputContainer outputText={this.state.outputText} onChange={(e) => this.changeInputText(e)}/>
+        <TranslateButton onClick = {() => this.produceTranslation()} />
       </div>
     );
   }

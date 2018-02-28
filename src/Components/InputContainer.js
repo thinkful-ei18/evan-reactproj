@@ -6,7 +6,7 @@ export default function InputContainer (props) {
   return (
     <div className='input-field'>
       <InputField onChange={(e) => props.onChange(e)}/>
-      <InputField/>
+      <InputField outputText={props.outputText} />
     </div>
   )
 }

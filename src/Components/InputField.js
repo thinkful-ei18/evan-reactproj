@@ -7,7 +7,7 @@ export default class InputField extends React.Component {
   // }
     render() {
       return (
-        <textarea onChange={(e) => this.props.onChange(e)} className='input-text'/>
+        <textarea onChange={(e) => this.props.onChange(e)} value={this.props.outputText} className='input-text'/>
       )
     }
 

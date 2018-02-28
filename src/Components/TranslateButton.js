@@ -3,6 +3,6 @@ import './TranslateButton.css';
 
 export default function TranslateButton (props) {
   return (
-    <button className='translate-button'>Translate</button>
+    <button onClick={() => props.onClick()} className='translate-button'>Translate</button>
   )
 }

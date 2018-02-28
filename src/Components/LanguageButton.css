@@ -7,7 +7,7 @@ button {
 }
 
 
-.selected {
+[aria-pressed=true] {
   background-color:#202328;
   color:white;
 }
