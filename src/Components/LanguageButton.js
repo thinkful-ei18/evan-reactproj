@@ -1,9 +1,20 @@
 import React from 'react';
+import './LanguageButton.css';
 
-export default function LanguageButton (props) {
-  return (
-    <button className='language-selector-button' key={props.index}>
-      {props.title}
+export default class LanguageButton extends React.Component {
+    render() {
+    if (this.props.isSelected) {
+      return (
+      <button className='language-selector-button selected' onClick = {() => this.props.onClick(this.props.iso)} key={this.props.index}>
+      {this.props.title}
+    </button>)
+    } else {
+      return (
+    <button className='language-selector-button' onClick = {() => this.props.onClick(this.props.iso)} key={this.props.index}>
+      {this.props.title}
     </button>
-  )
+    )  
 }
+    }
+  }
+

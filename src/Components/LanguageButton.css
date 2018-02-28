@@ -1,0 +1,13 @@
+button {
+  border:none;
+  padding:10px;
+  width:5em;
+  margin:1px;
+  border-radius:2px;
+}
+
+
+.selected {
+  background-color:#202328;
+  color:white;
+}
